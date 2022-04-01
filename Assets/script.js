@@ -11,15 +11,16 @@ var passUppCaseSplit = passUppCase.split("");
 var passNumCase = "0123456789";
 var passNumCaseSplit = passNumCase.split("");
 // Array of Symbols
-var passSymCase ="!#$%&\()*+,-./:;<=>?@^[\\]^_`{|}~";
+var passSymCase ="!#$%&)*+{}-./:;<=>?@^[]^_`{|}~";
 var passSymCaseSplit = passSymCase.split("");
 
 // Password Requirements (Prompts / Confirms )
 var manyCharacters = "How many characters your password will have? (Minimum 8 characters)."
 var placeholder= "Your new password will appear here."
-var wantLowerCase = "Do you want to add lowerCase letters?"
-var wantUpperCase = "Do you want to add UpperCase letters?"
-var wantSymbols = "Do you want to add Special Characters?"
+var wantLowerCase = "Do you want to add lower case letters?"
+var wantUpperCase = "Do you want to add upper case letters?"
+var wantNumbers = "Do you want to add numbers?"
+var wantSymbols = "Do you want to add special characters?"
 
 // Write password to the #password input
 function writePassword() {
@@ -39,7 +40,7 @@ function generatePassword() {
   var randomPass = "";
   var passCharacters = prompt(manyCharacters);
   
-  // First Requirement 
+  // First Requirement, Total Lenght of Password 
   if (passCharacters < 8) {
       alert("Your password must be minimum of 8 characters.");
         return placeholder;
@@ -51,7 +52,7 @@ function generatePassword() {
        return placeholder;
   }    
   
-  // Second Requirement
+  // Second Requirement, Lower Case Letters
     var passLower = confirm(wantLowerCase); 
       if(passLower===true) {
         for (var i =0; i < lowerCaseSplit.length; i++) {
@@ -60,7 +61,7 @@ function generatePassword() {
     
   }
 
-  // Third Requirement
+  // Third Requirement, Upper Case Letters
   var passUpper = confirm(wantUpperCase);
     if (passUpper===true) {
       for (var i=0; i < passUppCaseSplit.length; i++){
@@ -69,15 +70,23 @@ function generatePassword() {
       
   }
   
-  // Fourth Requirement
+  // Fourth Requirement, Numbers
+  var passNumbers= confirm(wantNumbers);
+    if (passNumbers ===true) {
+      for (var i=0; i < passNumCaseSplit.length; i++){
+        passwordValue.push(passNumCaseSplit[i]);
+     }
+  }     
+
+   // Fifth Requirement, Special Characters
   var passSymbols = confirm(wantSymbols);
-    if (passSymbols ===true) {
-      for (var i=0; i < passSymCaseSplit.length; i++)
-        passwordValue.push(passSymCaseSplit[i]);
-   } 
+  if (passSymbols ===true) {
+    for (var i=0; i < passSymCaseSplit.length; i++)
+      passwordValue.push(passSymCaseSplit[i]);
+ } 
   
    // If no requirements have been selected
- if (passLower === false && passUpper === false && passSymbols === false ){
+ if (passLower === false && passUpper === false && passSymbols === false && passNumbers === false){
   alert("Please, choose at least one option.");
   return  placeholder;
  }
