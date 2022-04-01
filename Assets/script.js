@@ -19,8 +19,17 @@ function generatePassword() {
   if (passLength < 8) {
     alert("Your password must be minimum of 8 characters.");
   } else if (passLength > 128) {
-    alert("Oh, I forgot! Your password must not exceed the 128 characters.");
-   } 
- }
+    alert("Oh, I forgot! Your password must not exceed the 128 characters.");   
+   }  else {
+        return "Your new password will appear here";
+  }    
  
+ 
+ 
+ 
+ 
+ 
+ 
+  }
+
 
