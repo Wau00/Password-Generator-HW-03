@@ -1,24 +1,25 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-
 // Array of lowercase letters
-var lowerCase= ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var lowerCase="abcdefghijklmnopqrstuvwxyz";
 var lowerCaseSplit = lowerCase.split("");
 // Array of UPPERCASE letters
-var passUppCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+var passUppCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var passUppCaseSplit = passUppCase.split("");
 // Array of Numbers
-var passNumCase = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+var passNumCase = "0123456789";
 var passNumCaseSplit = passNumCase.split("");
 // Array of Symbols
-var passSymCase =["?","!","<",">","=","@","%","$", ")","_","&","#"]
+var passSymCase ="!#$%&\()*+,-./:;<=>?@^[\\]^_`{|}~";
 var passSymCaseSplit = passSymCase.split("");
+
 // Write password to the #password input
+
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  var passRandom = []
+  var passRandom = [];
   passwordText.value = password;
 
 }
@@ -40,22 +41,26 @@ function generatePassword() {
   }  else if (passCharacters === null){
         return "Your new password will appear here";
   }    
-
-   var passLower = confirm("Do you want to add lowerCase letters?")
-      if(passLower===true){
-          for (var i =0; i < passLowCase.length; i++)
-        passRandom.push(passLowCase(i))
-        
-      }
-
-
- 
- 
- 
- 
- 
- 
- 
+  var passLower = confirm("Do you want to add lowerCase letters?");
+  if(passLower===true) {
+   for (var i =0; i < passNumCaseSplit.length; i++) {
+ passRandom.push(passLowCaseSplit[i]);
+   }
+ }
+  var passUpper = confirm("Do you want to add UpperCase letters?");
+  if (passUpper === true) {
+    for (var i=0; i < passUppCaseSplit.length; i++){
+      passRandom.push(passUppCaseSplit[i]);
+    }
   }
+
+ 
+ 
+ 
+}
+ 
+ 
+ 
+  
 
 
