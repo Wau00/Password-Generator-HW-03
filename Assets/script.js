@@ -16,7 +16,7 @@ var passSymCaseSplit = passSymCase.split("");
 
 // Password Requirements (Prompts / Confirms )
 var manyCharacters = "How many characters your password will have? (Minimum 8 characters)."
-var placeholder= "Your new password will appear here"
+var placeholder= "Your new password will appear here."
 var wantLowerCase = "Do you want to add lowerCase letters?"
 var wantUpperCase = "Do you want to add UpperCase letters?"
 var wantSymbols = "Do you want to add Special Characters?"
@@ -44,7 +44,7 @@ function generatePassword() {
       alert("Your password must be minimum of 8 characters.");
         return placeholder;
   } else if (passCharacters > 128) {
-        alert("Oh, I forgot! Your password must not exceed the 128 characters.");  
+        alert("Oh, I forgot! Your password must not exceed  128 characters.");  
           return placeholder; 
   
   } else if (passCharacters === null){
@@ -68,15 +68,20 @@ function generatePassword() {
     }
       
   }
+  
   // Fourth Requirement
   var passSymbols = confirm(wantSymbols);
     if (passSymbols ===true) {
-      for (var i=0; i < passSymCaseSplit.length; i++){
+      for (var i=0; i < passSymCaseSplit.length; i++)
         passwordValue.push(passSymCaseSplit[i]);
-   }
-      
+   } 
+  
+   // If no requirements have been selected
+ if (passLower === false && passUpper === false && passSymbols === false ){
+  alert("Please, choose at least one option.");
+  return  placeholder;
  }
- 
+
  // Sum all Values and Generate a Random Password
  for (var i=0; i < passCharacters; i++){
    passwordValue[Math.floor(Math.random() * passwordValue.length)];
