@@ -19,7 +19,7 @@ var passSymCaseSplit = passSymCase.split("");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  var passRandom = [];
+  
   passwordText.value = password;
 
 }
@@ -29,6 +29,7 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
   
+  var passwordValue = [];
   var passCharacters = prompt("How many characters your password will have? (Minimum 8 characters).")
   
   if (passCharacters < 8) {
@@ -42,18 +43,28 @@ function generatePassword() {
         return "Your new password will appear here";
   }    
   var passLower = confirm("Do you want to add lowerCase letters?");
+  
   if(passLower===true) {
-   for (var i =0; i < passNumCaseSplit.length; i++) {
- passRandom.push(passLowCaseSplit[i]);
+   for (var i =0; i < lowerCaseSplit.length; i++) {
+ passwordValue.push(lowerCaseSplit[i]);
+  
    }
+  
  }
-  var passUpper = confirm("Do you want to add UpperCase letters?");
-  if (passUpper === true) {
+ var passUpper = confirm("Do you want to add UpperCase letters?");
+  if (passUpper===true) {
     for (var i=0; i < passUppCaseSplit.length; i++){
-      passRandom.push(passUppCaseSplit[i]);
+      passwordValue.push(passUppCaseSplit[i]);
     }
+    
   }
-
+  var passSymbols = confirm("Do you want to add Special Characters?");
+  if (passSymbols ===true) {
+    for (var i=0; i < passSymCaseSplit.length; i++){
+      passwordValue.push(passSymCaseSplit[i]);
+    }
+    
+  }
  
  
  
