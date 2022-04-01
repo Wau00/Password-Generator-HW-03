@@ -14,7 +14,13 @@ var passNumCaseSplit = passNumCase.split("");
 var passSymCase ="!#$%&\()*+,-./:;<=>?@^[\\]^_`{|}~";
 var passSymCaseSplit = passSymCase.split("");
 
-//
+// Password Requirements (Prompts / Confirms )
+var manyCharacters = "How many characters your password will have? (Minimum 8 characters)."
+var placeholder= "Your new password will appear here"
+var wantLowerCase = "Do you want to add lowerCase letters?"
+var wantUpperCase = "Do you want to add UpperCase letters?"
+var wantSymbols = "Do you want to add Special Characters?"
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -31,34 +37,39 @@ function generatePassword() {
   
   var passwordValue = [];
   var randomPass = "";
-  var passCharacters = prompt("How many characters your password will have? (Minimum 8 characters).")
+  var passCharacters = prompt(manyCharacters);
   
+  // First Requirement 
   if (passCharacters < 8) {
       alert("Your password must be minimum of 8 characters.");
-        return "Your new password will appear here";
+        return placeholder;
   } else if (passCharacters > 128) {
         alert("Oh, I forgot! Your password must not exceed the 128 characters.");  
-          return "Your new password will appear here"; 
+          return placeholder; 
   
   } else if (passCharacters === null){
-       return "Your new password will appear here";
+       return placeholder;
   }    
   
-    var passLower = confirm("Do you want to add lowerCase letters?"); 
+  // Second Requirement
+    var passLower = confirm(wantLowerCase); 
       if(passLower===true) {
         for (var i =0; i < lowerCaseSplit.length; i++) {
           passwordValue.push(lowerCaseSplit[i]);
     }
     
   }
-  var passUpper = confirm("Do you want to add UpperCase letters?");
+
+  // Third Requirement
+  var passUpper = confirm(wantUpperCase);
     if (passUpper===true) {
       for (var i=0; i < passUppCaseSplit.length; i++){
         passwordValue.push(passUppCaseSplit[i]);
     }
       
   }
-  var passSymbols = confirm("Do you want to add Special Characters?");
+  // Fourth Requirement
+  var passSymbols = confirm(wantSymbols);
     if (passSymbols ===true) {
       for (var i=0; i < passSymCaseSplit.length; i++){
         passwordValue.push(passSymCaseSplit[i]);
@@ -66,15 +77,16 @@ function generatePassword() {
       
  }
  
+ // Sum all Values and Generate a Random Password
  for (var i=0; i < passCharacters; i++){
-   passwordValue[ algorithm ];
+   passwordValue[Math.floor(Math.random() * passwordValue.length)];
    randomPass +=
-    passwordValue [ algorithm ];
+    passwordValue [Math.floor(Math.random() * passwordValue.length)];
  }
  return randomPass
 }
  
- var algorithm = Math.floor(Math.random() * passwordValue.length)
+ 
  
   
 
